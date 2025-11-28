@@ -59,7 +59,7 @@ def clear_screen():
         os.system('clear')
 
 def do_your_homework():
-    print('Quick you have 5 seconds to finish your homework!')
+    print('Quick you have 7 seconds to finish your homework!')
     time.sleep(2)
 
     start_time = time.time()
@@ -69,7 +69,7 @@ def do_your_homework():
         print(pics)
         input('Click ENTER until you finish all your homework:')
     
-        if time.time() - start_time >= 5:
+        if time.time() - start_time >= 7:
             clear_screen()
             print(pics)
             print("\n TIME'S UP! You didn’t finish all your homework!")
