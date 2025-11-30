@@ -14,7 +14,7 @@ def getrandomword(choiceList):
     Index = random.randint(0, len(choiceList) - 1)
     return choiceList[Index]
 
-def escape_dana_porter_elevator():
+def escape_dana_porter_elevator(time_limit=None):
     
     print('quick! You are stuck in the Dana Porter Elevator! Choose your escape wisely \n')
     
@@ -42,8 +42,11 @@ def escape_dana_porter_elevator():
     
     if selected in right_choices:
         print('Congrats! You have escaped the Dana Porter Elevator')
+        return True
     else:
         print('FAIL! You are forever stuck in the elevator')
+        return False
     
 
-escape_dana_porter_elevator()
+if __name__ == "__main__":
+    escape_dana_porter_elevator()

@@ -6,7 +6,7 @@ def exam_room(player=None):
     print("  [1]   [2]   [3]")
     print()
 
-def find_exam_desk():
+def find_exam_desk(time_limit=None):
     print("\nFind your exam desk! BEWARE, its nesting season!\n")
     
     correct = random.randint(1, 3)
@@ -25,10 +25,10 @@ def find_exam_desk():
         if answer == correct:
             exam_room(player=answer)
             print("\n [✔] You found your correct exam desk! Good luck!")
-            break
+            return True
         else: 
             print("\n   [🦆]  HONK!! Wrong desk!!")
-            break
+            return False
 
-
-find_exam_desk()
+if __name__ == "__main__":
+    find_exam_desk()

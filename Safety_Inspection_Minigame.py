@@ -76,40 +76,44 @@ def safety_inspection_minigame(time_limit=None):
             "correct":"2"
         }
         ]
-    random.shuffle(hazards)
-    score = 0
-    
-    #The game loop
-    for h in hazards:
-        print(f"\nHazard: {h['hazard']}\n")
-        for i, option in  enumerate(h["options"], start=1):
-            print(f" {i}) {option}")
-            
-        #----For Time Limit----
-        start_time = time.time()
-        choice = input("\nYour Answer:\t")
-        
-        #Processing Player Input
-        try:
-            if (time.time() - start_time) > time_limit:
-                print("\nTime's Up! Your indecision during a hazard is unsafe by default. Try Again!")
-                continue # player gets no score
-            
+    # Ask just one random hazard per run
+    h = random.choice(hazards)
+    print(f"\nHazard: {h['hazard']}\n")
+    for i, option in  enumerate(h["options"], start=1):
+        print(f" {i}) {option}")
+
+    # ---- Ask the user ----
+    start_time = time.time()
+    choice = input("\nYour Answer:\t")
+
+    # Processing Player Input
+    try:
+            if time_limit is not None and (time.time() - start_time) > time_limit:
+                print("\nTime's Up! Your indecision during a hazard is unsafe by default.")
+                return False
+            # Validate digit choice
+            if not choice.isdigit() or int(choice) not in range(1, len(h['options'])+1):
+                print("\nInvalid Input! This is counted as unsafe.")
+                return False
             if choice == h["correct"]:
                 print("\nCorrect! Your knowledge of safety saved the day.")
-                score += 1
+                return True
             else:
                 print("\nIncorrect! You picked an Unsafe choice.")
-                
-        except ValueError:
+                return False
+    except ValueError:
             print("\nInvalid Input! This is counted as unsafe.")
+            return False
             
-    print(f"\n=== FINAL SAFETY SCORE: {score} / 5 ===")
-    return score
+    # should be unreachable as this function returns after the single question
+    return False
                 
 
 if __name__ == "__main__":
     print("Starting \"Safety Inspection\" Minigame Playtest")
-    score = safety_inspection_minigame(time_limit=10)
-    print("Score returned to main game:", score)
+    total = 0
+    for _ in range(5):
+        if safety_inspection_minigame(time_limit=10):
+            total += 1
+    print("Total correct:", total)
     

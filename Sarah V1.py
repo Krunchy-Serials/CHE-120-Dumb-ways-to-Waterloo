@@ -60,10 +60,11 @@ def timed_input(prompt, timeout):
 
 # Minigames!!!
 
-def minigame_wrong_subject():
-    print("\n💣 QUICK! Choose the subject that doesn't fit before bomb blows!")
+def minigame_wrong_subject(time_limit=None):
+    effective_time = time_limit or 7
+    print(f"\n💣 QUICK! Choose the subject that doesn't fit before the bomb blows! ({effective_time}s)")
     print("Type: CHE120 / CHE100 / MATH100")
-    answer = timed_input("Your choice: ", 7)
+    answer = timed_input("Your choice: ", effective_time)
 
     if answer == "MATH100":
         print("✅ Correct! We don't take MATH100")
@@ -73,9 +74,11 @@ def minigame_wrong_subject():
         return False
 
 
-def minigame_fail_exam():
-    print("\n 💬 TYPE FAST! Type the sentence 'input-output+generation-accumulation=0' within 15 seconds to not fail your exam!")
-    answer = timed_input("Type here: ", 15)
+def minigame_fail_exam(time_limit=None):
+    # Give more time for this minigame; default to 20s unless the difficulty overrides it.
+    effective_time = time_limit or 20
+    print(f"\n 💬 TYPE FAST! Type the sentence 'input-output+generation-accumulation=0' within {effective_time} seconds to not fail your exam!")
+    answer = timed_input("Type here: ", effective_time)
 
     if answer == "input-output+generation-accumulation=0":
         print(" Nice, you didn't fail!😎")
@@ -86,9 +89,10 @@ def minigame_fail_exam():
 
 
     
-def minigame_math():
-    print("\n🧮 Solve this FAST or Professor Comfort will smack you: derivative of x^2+3 = ? (3 seconds)")
-    answer = timed_input("Your answer: ", 3)
+def minigame_math(time_limit=None):
+    effective_time = time_limit or 3
+    print(f"\n🧮 Solve this FAST or Professor Comfort will smack you: derivative of x^2+3 = ? ({effective_time} seconds)")
+    answer = timed_input("Your answer: ", effective_time)
 
     if answer == "2x":
         print("👍 Correct! Professor Comfort is Happy, Happy, Happy")
@@ -97,11 +101,12 @@ def minigame_math():
         print("❌ Times up! You should've studied more...😬")
         return False
 
-def minigame_tims_run():
-    print("\n☕️ You're running late to class but also need caffeine, type LARGE ICED COFFEE in 10 seconds to order as fast as you can!")
-    answer = timed_input("Type here: ", 15)
+def minigame_tims_run(time_limit=None):
+    effective_time = time_limit or 15
+    print(f"\n☕️ You're running late to class but also need caffeine — type 'LARGE ICED COFFEE' in {effective_time} seconds to order as fast as you can!")
+    answer = timed_input("Type here: ", effective_time)
 
-    if answer == 'LARGE ICED COFFEE'
+    if answer == 'LARGE ICED COFFEE':
         print("Your addiction was fed, and you made it to class!⚡️")
         return True
     else:

@@ -18,9 +18,10 @@ def timed_input(prompt, timeout):
 
 
 # Game Ideas
-def close_fume_hood():
-    print('\n🚨QUICK type \'close\' to close the fume hood🚨')
-    answer = timed_input('\ntype here: ', 10)
+def close_fume_hood(time_limit=None):
+    effective_time = time_limit or 10
+    print(f"\n🚨QUICK! Type 'close' to close the fume hood ({effective_time}s) 🚨")
+    answer = timed_input('\ntype here: ', effective_time)
     
     if answer == 'close':
         print('you saved the lab!! 😅')
@@ -29,10 +30,11 @@ def close_fume_hood():
         print('everyone is unconscious...')
         return False
     
-def learn_crash():
-    print('\nLearn is crashing and the assignment is due!! 💻')
+def learn_crash(time_limit=None):
+    effective_time = time_limit or 10
+    print(f"\nLearn is crashing and the assignment is due!! 💻 ({effective_time}s)")
     print('\ntype \'submit\' as quick as you can!!')
-    answer = timed_input('\ntype here: ', 10)
+    answer = timed_input('\ntype here: ', effective_time)
     
     if answer == 'submit':
         print('just in time, 55%!! 😅')
@@ -41,52 +43,32 @@ def learn_crash():
         print('another failed assignment...')
         return False
 
-def meniscus_dilemma():
-    print('\nthe meniscus in the beaker is too high, what do you do? 🧪')
-    print('\na) add more \nb) use your mouth and blow it out \nc) remove a drop with a pipette')
-    answer = timed_input('\ntype here: ', 10)
+def meniscus_dilemma(time_limit=None):
+    effective_time = time_limit or 10
+    print(f"\nthe meniscus in the beaker is too high, what do you do? 🧪 ({effective_time}s)")
+    print('\n1) add more \n2) use your mouth and blow it out \n3) remove a drop with a pipette')
+    answer = timed_input('\ntype here: ', effective_time)
     
-    if answer == 'c':
+    if answer == '3':
         print('perfect!')
         return True
     else:
         print('have you done your safety? 🤔')
         return False
     
-def reactor_leak():
+def reactor_leak(time_limit=None):
     codes = ['A57JP', 'J9OW1', 'NA7T1', '94RU2', 'NI218', '36KQ0']
-    print('\nQUICK type the code so the reactor is fixed!')
-    print(random.choice(codes))
-    answer = timed_input('\ninput code: ', 10)
+    effective_time = time_limit or 10
+    print(f"\nQUICK! Type the code so the reactor is fixed ({effective_time}s)")
+    code = random.choice(codes)
+    print(code)
+    answer = timed_input('\ninput code: ', effective_time)
     
-    if answer in (codes):
+    if answer == code:
         print('thank goodness you stopped the leak')
         return True
     else:
         print('\nWere those fish green before...')
         return False
     
-#needed to run
 MINIGAMES = [close_fume_hood, learn_crash, meniscus_dilemma, reactor_leak]
-
-def main():
-    score = 0
-    lives = 3
-
-    print("🎉 Welcome to Dumb Ways to Waterloo — Python Edition! 🎉")
-    print("Survive as many minigames as possible.\n")
-
-    while lives > 0:
-        game = random.choice(MINIGAMES)
-        result = game()
-
-        if result:
-            score += 1
-            print(f"⭐ Score = {score}")
-        else:
-            lives -= 1
-            print(f"💔 Lives left: {lives}")
-
-        time.sleep(1)
-
-    print("\n☠️ GAME OVER! Final score:", score)
