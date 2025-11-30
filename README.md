@@ -2,7 +2,7 @@
 
 This repository contains a collection of small, text-based minigames grouped
 into a single launcher called `Main_Game.py`. The intent is educational — this
-project is ideal for college students learning Python, and each minigame is a
+project is ideal made by college students learning Python, and each minigame is a
 simple interactive exercise showcasing functions, input handling, timing, and
 dynamic module loading. The launcher also shows simple emoji feedback and
 tracks a persistent high score in `highscore.txt`.
