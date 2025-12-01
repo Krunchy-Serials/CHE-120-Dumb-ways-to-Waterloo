@@ -32,7 +32,10 @@ def close_fume_hood(time_limit=None):
     else:
         print('everyone is unconscious...')
         return False
-    
+
+#MS this function is about the learn site crashing, you have to type "submit" before the time runs out.
+#MS If the input does not match exactly then the function goes to the else statement and prints the statement associated, and returns false.
+#MS If the input matches exactly then the function goes to the if statement and prints the statement associated, and returns true
 def learn_crash(time_limit=None):
     effective_time = time_limit or 10
     print(f"\nLearn is crashing and the assignment is due!! 💻 ({effective_time}s)")
@@ -46,6 +49,9 @@ def learn_crash(time_limit=None):
         print('another failed assignment...')
         return False
 
+#MS this function is a multiple choice question. This question tests the users lab skills.
+#MS if the input does not match the exactly the function returns false and prints the statement associated.
+#MS if the input does match exactly then the function returns true and prints the statement associated
 def meniscus_dilemma(time_limit=None):
     effective_time = time_limit or 10
     print(f"\nthe meniscus in the beaker is too high, what do you do? 🧪 ({effective_time}s)")
@@ -58,7 +64,10 @@ def meniscus_dilemma(time_limit=None):
     else:
         print('have you done your safety? 🤔')
         return False
-    
+
+#MS although we don't have a reactor at the university, this could be a career branch for some of us. the user has to type the code before time runs out
+#MS if the input does not match exactly then the function goes to the else statement and returns false and prints the statement associated
+#MS if the input does match exactly then the function goes to the if statement and returns true and prints the statement associated
 def reactor_leak(time_limit=None):
     codes = ['A57JP', 'J9OW1', 'NA7T1', '94RU2', 'NI218', '36KQ0']
     effective_time = time_limit or 10
