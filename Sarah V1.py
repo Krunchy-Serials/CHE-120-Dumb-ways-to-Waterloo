@@ -114,38 +114,6 @@ def minigame_tims_run(time_limit=None):
         return False
        
     
-   
-
-
-# List of available minigames
-MINIGAMES = [ minigame_math,minigame_fail_exam,minigame_wrong_subject, minigame_tims_run ]
-
-
-# ------------------ MAIN GAME LOOP ----------------------
-
-def main():
-    score = 0
-    lives = 3
-
-    print("🎉 Welcome to Dumb Ways to Waterloo!")
-    print("Survive as many minigames as possible...or die☠️\n")
-
-    while lives > 0:
-        game = random.choice(MINIGAMES)
-        result = game()
-
-        if result:
-            score += 1
-            print(f"⭐ Score = {score}")
-        else:
-            lives -= 1
-            print(f"💔 Lives left: {lives}")
-
-        time.sleep(1)
-
-    print("\n☠️ GAME OVER! Final score:", score)
-
-
 if __name__ == "__main__":
     main()
 
