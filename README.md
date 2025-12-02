@@ -15,12 +15,12 @@ Contents
  
 List of minigames
 -----------------
--Safety_Inspection_Minigame.py
--do_your_homework.py
--find_exam_desk.py
--dana_porter_elevator.py
--Sarah V1.py
--Madi's_Contribution.py
+	-Safety_Inspection_Minigame.py
+	-do_your_homework.py
+	-find_exam_desk.py
+	-dana_porter_elevator.py
+	-Sarah V1.py
+	-Madi's_Contribution.py
 
 Basic idea
 ----------
